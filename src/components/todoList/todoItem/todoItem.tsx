@@ -3,8 +3,8 @@ import {ITask} from '../../../interfaces/interfaces'
 import './todoItem.scss'
 interface ITodoItemProps{
     task: ITask;
-    deleteTask: any;
-    checkTask: any;
+    deleteTask: (id:string) => void;
+    checkTask: (id:string) => void;
 }
 
 const TodoItem = ({task,deleteTask,checkTask}:ITodoItemProps) => {

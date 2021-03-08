@@ -5,7 +5,7 @@ import './todoList.scss';
 
 interface ITodoListProps {
     tasks: ITask[];
-    modifyTasks: any;
+    modifyTasks: (newTasks:ITask[])=>void;
 }
 const TodoList = ({tasks,modifyTasks}:ITodoListProps) => {
     const handleDelete  = (id:string) => {
