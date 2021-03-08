@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import TodoList from './components/todoList/todoList';
+import {ITask} from './interfaces/interfaces'
+import './App.scss';
+import AddNewTodoForm from './components/addNewTodoFrom/addNewTodoForm';
+import Header from './components/header/header';
+
+
 
 function App() {
+  const [taskList,setTaskList] = useState<ITask[]>([
+    {id:'1', task: 'Make smth1', date: Date.now(), completed: false},
+    {id:'2', task: 'Make smth2', date: Date.now(), completed: false},
+    {id:'3', task: 'Make smth3', date: Date.now(), completed: false},
+    {id:'4', task: 'Make smth4', date: Date.now(), completed: false},
+    {id:'5', task: 'Make smth5', date: Date.now(), completed: false},
+  ])
+  const addNewTask = (task:ITask) => {
+    setTaskList([...taskList,task])
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header></Header>
+      <AddNewTodoForm modifyTasks = {addNewTask}></AddNewTodoForm>
+      <TodoList tasks = {taskList} modifyTasks = {setTaskList}></TodoList>
     </div>
   );
 }
