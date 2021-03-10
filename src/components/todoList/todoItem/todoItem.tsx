@@ -1,6 +1,7 @@
 import React from 'react'
 import {ITask} from '../../../interfaces/interfaces'
 import './todoItem.scss'
+
 interface ITodoItemProps{
     task: ITask;
     deleteTask: (id:string) => void;
@@ -9,6 +10,7 @@ interface ITodoItemProps{
 
 const TodoItem = ({task,deleteTask,checkTask}:ITodoItemProps) => {
     return(
+        
         <div className = 'todo-item' >
              <label className="container">
                 <span className = {`${task.completed?'todo-item_completed':''}`}>{task.task}</span>

@@ -1,13 +1,13 @@
 import React , {useState} from 'react'
 import { ITask } from '../../interfaces/interfaces';
-import './addNewTodoForm.scss'
+import './addNewTodoForm.scss';
+import mainStore from '../../stores/mainStore';
 
-interface IAddNewTodoFormProps {
-    modifyTasks: (task: ITask) => void;
-}
 
-const AddNewTodoForm = ({modifyTasks}:IAddNewTodoFormProps) => {
+const AddNewTodoForm = () => {
     const [inputValue,setInputValue] = useState<string>('');
+
+    const {addNewTask} = mainStore
 
     const handleClick = () => {
         console.log(inputValue)
@@ -20,7 +20,7 @@ const AddNewTodoForm = ({modifyTasks}:IAddNewTodoFormProps) => {
             date:Date.now(),
             id: Math.floor(Math.random()*1000).toString()
         }
-        modifyTasks(newTask)
+        addNewTask(newTask)
         setInputValue('')
     }
     return(
