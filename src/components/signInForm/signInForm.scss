@@ -1,24 +1,21 @@
-.add-todo-form {
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 20px;
+.sign-in-form, .sign-up-form {
     display: flex;
     flex-direction: column;
-    flex:1;
-    min-width: 500px;
-    color: #333;
-    label {
+    justify-content: center;
+    color: white;
+    padding: 15px;
+    label,button {
         text-align: left;
         margin-bottom: 10px;
         font-size: 1.2rem;
-        margin-left: 2rem;
+        font-weight: 600;
         margin-top: 1rem;
         display: block;
         transition: all 0.3s;
         transform: translateY(0.2rem);
         padding: 10px;
         background: #cc3355;
-        color: white;
+        color: #eee;
         text-decoration: none;
         width: fit-content;
     }
@@ -37,7 +34,7 @@
     }
     input:placeholder-shown + label{
         opacity: 0;
-       // visibility: hidden;
+        visibility: hidden;
         -webkit-transform: translateY(-4rem);
         transform: translateY(-2rem);
     }

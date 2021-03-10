@@ -1,16 +1,16 @@
 import React , {useState} from 'react'
 import { ITask } from '../../interfaces/interfaces';
 import './addNewTodoForm.scss';
-import mainStore from '../../stores/mainStore';
+import rootStore from '../../stores/rootStore';
 
 
 const AddNewTodoForm = () => {
     const [inputValue,setInputValue] = useState<string>('');
 
-    const {addNewTask} = mainStore
-
+    const {addNewTask} = rootStore.tasksStore
+    const {user} =rootStore.userStore
     const handleClick = () => {
-        console.log(inputValue)
+        if(user.login){
         if(!inputValue.trim()) {
             return
         }
@@ -18,9 +18,15 @@ const AddNewTodoForm = () => {
             task:inputValue,
             completed:false,
             date:Date.now(),
-            id: Math.floor(Math.random()*1000).toString()
+            id: Math.floor(Math.random()*1000).toString(),
+            userLogin:user.login
         }
         addNewTask(newTask)
+        }
+        else{
+            alert('You need to login')
+
+        }
         setInputValue('')
     }
     return(

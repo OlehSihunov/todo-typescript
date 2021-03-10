@@ -10,7 +10,6 @@ interface ITodoItemProps{
 
 const TodoItem = ({task,deleteTask,checkTask}:ITodoItemProps) => {
     return(
-        
         <div className = 'todo-item' >
              <label className="container">
                 <span className = {`${task.completed?'todo-item_completed':''}`}>{task.task}</span>

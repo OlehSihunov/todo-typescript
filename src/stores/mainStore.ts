@@ -1,31 +1,38 @@
 import {action,  makeObservable,  observable} from 'mobx'
 import {ITask} from '../interfaces/interfaces'
 
-class Tasks  {
+export default class Tasks  {
     constructor(){
         makeObservable(this)
     }
-    @observable tasks:ITask[] = [
-        {id:'1', task: 'Make smth1', date: Date.now(), completed: false},
-        {id:'2', task: 'Make smth2', date: Date.now(), completed: false},
-        {id:'3', task: 'Make smth3', date: Date.now(), completed: true},
-        {id:'4', task: 'Make smth4', date: Date.now(), completed: false},
-        {id:'5', task: 'Make smth5', date: Date.now(), completed: false},
-      ]
+    @observable tasks:ITask[] = JSON.parse(localStorage.getItem('tasks')||'[]')
     @action deleteTask = (id:string) => {
         this.tasks= this.tasks.filter(el => el.id !== id).slice()
+        this.updateTasks()
     }
      
     @action completeTask = (id:string) => {
         this.tasks = this.tasks.map(task=>task.id===id?{...task,completed:!task.completed}:task)
+        this.updateTasks()
 
     }
     @action addNewTask = (newTask:ITask) => {
         this.tasks = [...this.tasks, newTask]
+        console.log('upd')
+        this.updateTasks()
+    }
+
+    @action getTasks = () => {
+        console.log('get()')
+        const currentUser = JSON.parse(localStorage.getItem('user')||'{}')
+        console.log(currentUser)
+        console.log(this.tasks.map(e=>e.userLogin))
+        console.log(this.tasks.filter(e=>e.userLogin === currentUser.login))
         
-
-    }   
+        return this.tasks.filter(e=>e.userLogin === currentUser.login)
+        
+    }
+    updateTasks() {
+        localStorage.setItem('tasks',JSON.stringify(this.tasks))
+    }
 }
-
-const mainStore  = new Tasks()
-export default mainStore;
