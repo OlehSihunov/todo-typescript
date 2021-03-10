@@ -23,11 +23,7 @@ export default class Tasks  {
     }
 
     @action getTasks = () => {
-        console.log('get()')
         const currentUser = JSON.parse(localStorage.getItem('user')||'{}')
-        console.log(currentUser)
-        console.log(this.tasks.map(e=>e.userLogin))
-        console.log(this.tasks.filter(e=>e.userLogin === currentUser.login))
         
         return this.tasks.filter(e=>e.userLogin === currentUser.login)
         

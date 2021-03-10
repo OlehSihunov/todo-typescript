@@ -1,5 +1,6 @@
 import { observer } from 'mobx-react'
 import React, { useState } from 'react'
+import { useHistory } from 'react-router'
 import { IUser } from '../../interfaces/interfaces'
 import rootStore from '../../stores/rootStore'
 
@@ -8,16 +9,19 @@ const SignUpForm = observer(() => {
     const [password,setPassword] = useState('')
     const [repeatPassword,setRepeatPassword] = useState('')
     const {addNewUser} = rootStore.userStore 
-    console.log(addNewUser)
+    const history = useHistory()
+    
     const handleClick = () => {
-        setLogin('')
-        setPassword('')
-        setRepeatPassword('')
+        
         const newUser:IUser = {
             login,
             password
         }
+        setLogin('')
+        setPassword('')
+        setRepeatPassword('')
         addNewUser(newUser)
+        history.push('/')
     }
 
     return(

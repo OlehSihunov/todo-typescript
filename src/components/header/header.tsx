@@ -7,7 +7,7 @@ import { observer } from 'mobx-react';
 
 const Header = observer(() => {
     const {user,logOut}  = rootStore.userStore
-    console.log(JSON.stringify(user))
+    
     return (
         <div className = 'header'>
             <NavLink to ='/'><span className = 'header__title '>Do.it</span></NavLink>

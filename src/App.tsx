@@ -9,7 +9,6 @@ import SignUpForm from './components/signUpForm/signUpForm';
 
 
 function App() {
-
   return (
     <div className="App">
       <BrowserRouter>
@@ -21,7 +20,7 @@ function App() {
             </Route>
             <Route path="/signin">
               <SignInForm></SignInForm>
-            </Route>
+              </Route>
             <Route path="/signup">
               <SignUpForm></SignUpForm>
             </Route>

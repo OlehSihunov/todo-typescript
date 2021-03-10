@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router'
 import rootStore from '../../stores/rootStore'
 import './signInForm.scss'
 
@@ -6,11 +7,12 @@ const SignInForm = () => {
     const [login,setLogin] = useState('')
     const [password,setPassword] = useState('')
     const {logIn} = rootStore.userStore
-
+    const history = useHistory()
     const handleClick = () => {
         console.log('login ' + login)
         console.log('password ' + password)
         logIn({login,password})
+        history.push('/')
     }
 
     return(

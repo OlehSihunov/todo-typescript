@@ -21,18 +21,15 @@ import {IUser} from '../interfaces/interfaces'
         if(tUser){
             this.user =(tUser)
             this.updateUsers()
-            window.location.replace('/')
         } else {
             alert('No such user')
         }
         
     }
     @action addNewUser = (newUser:IUser) => {
-        console.log(newUser)
         this.users = [...this.users, newUser]
         this.user = newUser
         this.updateUsers()
-        window.location.replace('/')
 
     }
 
